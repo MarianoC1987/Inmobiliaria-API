@@ -1,5 +1,5 @@
 const knex = require("../config/knexFile");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 exports.registerController = async (req, res) => {
