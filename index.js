@@ -20,7 +20,7 @@ app.use("/api", users);
 app.use("/api", estates);
 
 //EJECUCION DEL SERVIDOR
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

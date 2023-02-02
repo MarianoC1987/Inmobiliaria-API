@@ -1,0 +1,46 @@
+CREATE TABLE direcciones(
+direccionId int NOT NULL,
+departamento CHARACTER VARYING,
+zona CHARACTER VARYING,
+domicilio CHARACTER VARYING,
+CONSTRAINT PK_direcciones PRIMARY KEY (direccionId));
+
+CREATE TABLE inmuebles(
+inmuebleId integer NOT NULL,
+operacion CHARACTER VARYING,
+tipo CHARACTER VARYING,
+dormitorios integer,
+baños integer,
+metrosTerreno CHARACTER VARYING,
+metrosEdificados CHARACTER VARYING,
+observaciones CHARACTER VARYING,
+descripcion CHARACTER VARYING,
+direccionId integer,
+precio CHARACTER VARYING,
+garage CHARACTER VARYING,
+CONSTRAINT PK_inmuebles PRIMARY KEY (inmuebleId));
+
+CREATE TABLE usuarios(
+usuarioId int NOT NULL,
+nombre CHARACTER VARYING,
+email CHARACTER VARYING,
+password CHARACTER VARYING,
+perfil integer NOT NULL,
+CONSTRAINT PK_CATEGORIAS PRIMARY KEY (usuarioId));
+
+CREATE TABLE imagenes(
+filedata bytea ,
+imagenId integer not null,
+inmuebleId integer not null,
+filetype CHARACTER VARYING,
+CONSTRAINT PK_imagenes PRIMARY KEY (imagenId));
+
+ALTER TABLE inmuebles
+ADD CONSTRAINT FK_direccionFK FOREIGN KEY(direccionId)
+REFERENCES direcciones (direccionId)
+on delete restrict on update restrict;
+
+ALTER TABLE imagenes
+ADD CONSTRAINT FK_inmuebles FOREIGN KEY(inmuebleId)
+REFERENCES inmuebles (inmuebleId)
+on delete restrict on update restrict;
