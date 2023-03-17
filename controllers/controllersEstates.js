@@ -217,7 +217,12 @@ exports.deleteEstate = (req, res) => {
         });
     })
     .catch((error) => {
-      res.status(400).json({ error: error.message });
+      res
+        .status(400)
+        .json({
+          error:
+            "No se ha podido eliminar el inmueble. Verifique el ID y vuelva a intentar.",
+        });
     });
 };
 
